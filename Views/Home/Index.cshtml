@@ -11,7 +11,7 @@
         @foreach (string i in Model)//displays all fav restaurants
         {
         <div class="card-columns card">
-            <p class="card-body">@i</p>
+            <p class="card-body">@Html.Raw(i)</p>
         </div>
         }
     

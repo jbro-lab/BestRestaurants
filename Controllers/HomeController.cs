@@ -28,8 +28,16 @@ namespace BestRestaurants.Controllers
             {//allows vars to be null and sets a default
                 string? favDish = r.favoriteDish ?? "They're all good!";
                 string? website = r.website ?? "Coming soon";
-                FavRestaurants.Add($"{r.rank}: {r.restaurantName} \n\t Best Dish: {favDish}" +
-                    $"\n\t Address: {r.address} \n\t Phone: {r.phone} \n\t Website: {website}");
+                if (website != "Coming soon")
+                {
+                    FavRestaurants.Add($"{r.rank}: {r.restaurantName} <br> Best Dish: {favDish}" +
+                        $"<br> Address: {r.address} <br> Phone: {r.phone} <br> Website: <a href='{website}'>{website}</a>");
+                }
+                else
+                {
+                    FavRestaurants.Add($"{r.rank}: {r.restaurantName} <br> Best Dish: {favDish}" +
+                        $"<br> Address: {r.address} <br> Phone: {r.phone} <br> Website: {website}");
+                }
             };
             return View(FavRestaurants);//returns list of FavRestaurants
         }
