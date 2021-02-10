@@ -12,9 +12,15 @@ namespace BestRestaurants.Models
         public string name { get; set; }
         [Required]
         public string restaurantName { get; set; }
-        [Required]
+       
         public string favoriteDish { get; set; }
+        [Phone]
         [Required]
         public string phone { get; set; }
+
+        public Recommendation()
+        {
+            this.favoriteDish = "It's all tasty";//sets favorite dish to default
+        }
     }
 }

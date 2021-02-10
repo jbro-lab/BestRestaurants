@@ -20,23 +20,23 @@ namespace BestRestaurants.Controllers
 
         public IActionResult Index()
         {
-            List<string> FavRestaurants = new List<string>();
+            List<string> FavRestaurants = new List<string>();//list for fav restaurants
 
 
 
             foreach(Restaurant r in Restaurant.GetRestaurants())
-            {
+            {//allows vars to be null and sets a default
                 string? favDish = r.favoriteDish ?? "They're all good!";
                 string? website = r.website ?? "Coming soon";
                 FavRestaurants.Add($"{r.rank}: {r.restaurantName} \n\t Best Dish: {favDish}" +
                     $"\n\t Address: {r.address} \n\t Phone: {r.phone} \n\t Website: {website}");
             };
-            return View(FavRestaurants);
+            return View(FavRestaurants);//returns list of FavRestaurants
         }
 
         public IActionResult ViewRecs()
         {
-            return View();
+            return View(RecommendationData.Recommendations);
         }
         [HttpGet]
         public IActionResult Recommend()
@@ -46,8 +46,13 @@ namespace BestRestaurants.Controllers
         [HttpPost]
         public IActionResult Recommend(Recommendation recommendation)
         {
-            RecommendationData.AddRecommendation(recommendation);
-            return View("ViewRecs");
+            if (ModelState.IsValid)//validates recommendation
+            {
+                RecommendationData.AddRecommendation(recommendation);
+                return RedirectToAction("ViewRecs");//if valid returns viewRecs
+            }
+            
+            return View();//if not valid returns back to page
         }
 
         public IActionResult Privacy()

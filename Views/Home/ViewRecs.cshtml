@@ -4,26 +4,29 @@
 @{
     ViewData["Title"] = "View Recommendations";
 }
-@model IEnumerable<RecommendationData>
+@model IEnumerable<Recommendation>
 <div>
-    <table class="w3-table-all w3-card-4">
-        <thead>
+    <table class="table-dark"><!--Table for all recommendations-->
+        <thead class="table-dark thead-dark" >
             <tr>
-                <th>Name</th>
-                <th>Restaurant Name</th>
-                <th>Favorite Dish</th>
-                <th>Phone</th>                
+                <th class="table-dark th" >Name</th>
+                <th class="table-dark th">Restaurant Name</th>
+                <th class="table-dark th">Favorite Dish</th>
+                <th class="table-dark th">Phone</th>                
             </tr>
         </thead>
-        <tbody>
-            
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            
+        <tbody class="table-dark tbody" >
+            @foreach (Recommendation i in Model)//displays all recommendations
+            {
+                <tr>
+                    <td class="table-dark td">@i.name</td>
+                    <td class="table-dark td">@i.restaurantName</td>
+                    <td class="table-dark td">@i.favoriteDish</td>
+                    <td class="table-dark td">@i.phone</td>
+                </tr>
+            }
+
+
         </tbody>
     </table>
 </div>

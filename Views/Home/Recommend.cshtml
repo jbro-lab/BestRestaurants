@@ -5,20 +5,32 @@
     ViewData["Title"] = "Recommend a Restaurant";
 }
 @model Recommendation
-<div>
-    <form method="post" asp-action="Recommend">
-        <label asp-for="name">Name: </label>
-        <input type="text" asp-for="name"/>
+<div >
+    <fieldset>
+        <form method="post" asp-action="Recommend">
+            <div class="form-row">
+                <label asp-for="name">Name: </label>
+                <input type="text" asp-for="name" />
+            </div>
+            <br />
+            <div class="form-row">
+                <label class="form-control:focus" asp-for="restaurantName">Restaurant Name: </label>
+                <input class="form-control:focus" type="text" asp-for="restaurantName" />
+            </div>
+            <br />
+            <div class="form-row">
+                <label class="form-control:focus" asp-for="favoriteDish">Favorite Dish: </label><!--allowed to be null-->
+                <input class="form-control:focus" type="text" asp-for="favoriteDish" />
+            </div>
+            <br />
+            <div class="form-row">
+                <label class="form-control:focus" asp-for="phone">Restaurant Phone: </label><!--phone number validated to an extent-->
+                <input class="form-control:focus" type="tel" asp-for="phone" />
+            </div>
+            <br />
 
-        <label asp-for="restaurantName">Restaurant Name: </label>
-        <input type="text" asp-for="restaurantName"/>
-
-        <label asp-for="favoriteDish">Favorite Dish: </label>
-        <input type="text" asp-for="favoriteDish" />
-
-        <label asp-for="phone">Restaurant Phone: </label>
-        <input type="tel" asp-for="phone"/>
-        <input type="submit" />
-        <div asp-validation-summary="All"></div>
-    </form>
+            <input type="submit" class="btn-dark"/>
+            <div asp-validation-summary="All"></div><!--displays if validation does not goe through-->
+        </form>
+    </fieldset>
 </div>

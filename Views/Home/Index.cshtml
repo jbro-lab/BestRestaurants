@@ -6,11 +6,14 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 <br /><br />
-<div>
-        @foreach(string i in Model)
+<div class="container">
+    
+        @foreach (string i in Model)//displays all fav restaurants
         {
-            <p>@i</p>
+        <div class="card-columns card">
+            <p class="card-body">@i</p>
+        </div>
         }
-        
+    
     
 </div>
