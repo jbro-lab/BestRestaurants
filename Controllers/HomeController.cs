@@ -17,7 +17,7 @@ namespace BestRestaurants.Controllers
         {
             _logger = logger;
         }
-
+        
         public IActionResult Index()
         {
             List<string> FavRestaurants = new List<string>();//list for fav restaurants
@@ -41,7 +41,7 @@ namespace BestRestaurants.Controllers
             };
             return View(FavRestaurants);//returns list of FavRestaurants
         }
-
+        [HttpGet("ViewRecommendations")]
         public IActionResult ViewRecs()
         {
             return View(RecommendationData.Recommendations);
